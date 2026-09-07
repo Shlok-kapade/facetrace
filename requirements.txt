@@ -1,0 +1,33 @@
+# ═══════════════════════════════════════════════════════════
+#  FaceTrace — Python Dependencies
+#  Install with: pip install -r requirements.txt
+#
+#  NOTE: face_recognition requires dlib + cmake.
+#  On Ubuntu/Debian:  sudo apt-get install cmake build-essential libopenblas-dev
+#  On macOS:          brew install cmake openblas
+#  On Windows:        install Visual Studio Build Tools + cmake
+# ═══════════════════════════════════════════════════════════
+
+# ── Core face recognition ───────────────────────────────────
+face_recognition>=1.3.0      # dlib-based 128-d face encoding
+numpy>=1.24.0                # required by face_recognition
+Pillow>=10.0.0               # image loading & cropping
+
+# ── Web search & scraping ───────────────────────────────────
+requests>=2.31.0             # HTTP requests
+beautifulsoup4>=4.12.0       # HTML parsing for profile extraction
+lxml>=5.0.0                  # fast HTML/XML parser (used by bs4)
+
+# ── NLP for name extraction ─────────────────────────────────
+spacy>=3.7.0                 # NER for person name extraction
+# After install, run: python -m spacy download en_core_web_sm
+
+# ── Ethereum / Blockchain ───────────────────────────────────
+web3>=6.0.0,<7.0.0           # Ethereum Python SDK
+py-solc-x>=2.0.0             # Solidity compiler wrapper (downloads solc automatically)
+
+# ── Web UI ──────────────────────────────────────────────────
+flask>=3.0.0                 # Web server for the UI
+
+# ── Config ──────────────────────────────────────────────────
+python-dotenv>=1.0.0         # Load .env file

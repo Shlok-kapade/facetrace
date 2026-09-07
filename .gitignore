@@ -1,0 +1,11 @@
+.env
+venv/
+__pycache__/
+*.pyc
+*.pyo
+face_crop.jpg
+contract_data.json
+contract_data_testnet.json
+.DS_Store
+node_modules/
+recordings/

@@ -1,0 +1,80 @@
+
+=================================================================
+  Face Identification & Blockchain Verification Pipeline
+  HH Goa 2026 -- Task 3 (Multi-Source Edition)
+=================================================================
+
+
+-----------------------------------------------------------------
+  [1/7] Face Detection & Encoding
+-----------------------------------------------------------------
+  Loading image: sample_data/ex1.jpg
+  Detected 1 face(s)
+  Saved cropped face to: ./face_crop.jpg
+  Face encoding: 128-d vector (first 5 values: [-0.10743853449821472, 0.028391387313604355, 0.05470447242259979, -0.08555450290441513, -0.08788710087537766]...)
+
+-----------------------------------------------------------------
+  [2/7] Local Face Database Lookup
+-----------------------------------------------------------------
+  No match in local database. Will proceed to web search.
+
+-----------------------------------------------------------------
+  [3/7] Multi-Engine Web Search (SerpApi)
+-----------------------------------------------------------------
+  Uploading image to temporary host...
+  Uploaded to: https://files.catbox.moe/5s1vr9.jpg
+  Querying 3 search engine(s)...
+    [Engine 1/3] Google Lens...
+    [Engine 1/3] Google Lens: 59 result(s)
+    [Engine 2/3] Yandex Images...
+    [Engine 2/3] Yandex: 99 result(s)
+    [Engine 3/3] Google Reverse Image...
+    [Engine 3/3] Google Reverse: 9 result(s)
+  Total: 167 results → 166 unique after dedup
+  [Pass 1] Biometrically checking candidate thumbnails (max 30)...
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQnAxsDGCHY04cxqnhl2tnVI41MR4Px8RoC3U1W3yPO_ZsUapmv: match=True, dist=0.3477
+    - Checked: 3 years in mumbai. when i moved here, i  | Dist: 0.3477 | Src: Instagram
+    ✓ Verified match: 3 years in mumbai. when i move... (Dist: 0.3477)
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRHH6NzKexhURvqGH7H0pzuo5kGYtTun5SWdhvcWDr0BmFfhBa5: match=False, dist=0.6448
+    - Checked: Eyes that talk 😻 📸 Shot on Phone (unedit | Dist: 0.6448 | Src: Instagram
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThWPwiyzxeOMNjhsO5NlsOZBTxq8F9Kn3RxAhyowi0D84oACHO: match=False, dist=0.6298
+    - Checked: How not to obsess? ❤️‍🩹🥰✨ [ Photoshoot,  | Dist: 0.6298 | Src: Instagram
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT6aBSSJz9scEuO3iqQgSrGwi1L49_T-CRVkUL1UQzSw5m4B3s2: match=False, dist=0.6290
+    - Checked: Hey ☺️👀 #picoftheday #instadaily #instag | Dist: 0.6290 | Src: Instagram
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRR5KWuDbaNp8uYWk0SV_xGF1zHosk0eq18piUEfOE5EErRbX6z: match=False, dist=0.5568
+    - Checked: My heart is beating😙💕 . . . #viral #tren | Dist: 0.5568 | Src: Instagram
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSoxeoyWeRNIACaxDNux3koK8MQNvarNgzXFEMf1odpgEVrZmGW: match=True, dist=0.2351
+    - Checked: Chase on X: "Most beautiful Avg 40 yr ol | Dist: 0.2351 | Src: x.com
+    ✓ Verified match: Chase on X: "Most beautiful Av... (Dist: 0.2351)
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQOKhwFwn5GDGzCAnST8A99z0z9z8wBYCHlebChRUDHIQFVgxfB: match=False, dist=0.5858
+    - Checked: Name naziya Age :17 Class :12th B'day :  | Dist: 0.5858 | Src: Threads
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgOuhYK6TQkjQ8UC0-VlKdF_YwYFLBv4wRig4QC54_Vt5SszK5: match=False, dist=0.6204
+    - Checked: A young Indian girl standing in a balcon | Dist: 0.6204 | Src: Threads
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT-ZGeilefDhwlPoluiyF6Vn7ucJuzcPq8-4t5Lh_eJDEj0X99b: match=False, dist=0.5958
+    - Checked: zaki musyaffa (zjek223) - Profile | Pint | Dist: 0.5958 | Src: Pinterest
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR5Quichy1_Stql112pRfq3CMqPYHl2kl_AwKonMBVyXdVcUHyI: match=False, dist=0.5545
+    - Checked: Tissa Biani Azzahra on X: "❤️🤗🥰" / X | Dist: 0.5545 | Src: x.com
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSipaAS754WFW3zihWkf0ivkEN4R4zib_yHFUOyfultUQHFoEii: match=False, dist=0.6785
+    - Checked: ADPList: Wienona Parlina | Dist: 0.6785 | Src: ADPList
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRkJjXsg4kQVcJydBARG4srxgMm9Ivi-A5zNjmzLW8TkhGzr6Xf: match=False, dist=0.5394
+    - Checked: 10 Fakta Film Garis Waktu, Adaptasi Nove | Dist: 0.5394 | Src: IDN Times
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEg_Uq7haSx7Ec21_txun2RaW85s-1k1C2-fJQVLJ8Z5zTLp8C: match=False, dist=0.5885
+    - Checked: A Girl in Blank Top Sitting on the Groun | Dist: 0.5885 | Src: Pexels
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS86wonHeKxxNfO1DnaSsCaNGfyiHlDngFRa5GJKT50d2dqRH1n: match=False, dist=0.6139
+    - Checked: Kimberly Lam (kiminpei) - Profile | Pint | Dist: 0.6139 | Src: Pinterest
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS19nkvIHSgr6UUBXy4EEPcvJaAxumasdwJsxTpFYNq2JQutGTz: match=False, dist=0.6888
+    - Checked: A woman with long hair sitting on the gr | Dist: 0.6888 | Src: Unsplash
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZbFo28SBRxW0zckP82214j6aCvxcQQ_DjGVAAXALT7fF2RoPx: match=False, dist=0.6563
+    - Checked: Anna-Magdalena Hämmerle - Filmmakers | Dist: 0.6563 | Src: Filmmakers
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo7T1ESbC9T5Be6RxsI8ruE_LzW2SAoWWOjZX83eqOTwGqaT08: match=False, dist=0.5958
+    - Checked: The Skin Care Step a Model Absolutely Ne | Dist: 0.5958 | Src: Candymag.com
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY8lyGkJ6Lcni52TPbkUa71Rq9MrMn_ZA1wNMzqYvmAW6CePrH: match=False, dist=0.6823
+    - Checked: Riddhi Patel - IT Support II Configurati | Dist: 0.6823 | Src: LinkedIn
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEFOrUdpG3g8fq4jemtpq5IVw_0H87QirzDmHwYx3jhseXSiOD: match=False, dist=0.6782
+    - Checked: Sumaiya Rahman | Facebook | Dist: 0.6782 | Src: Facebook
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRblGTZfp8KvUwHWe3r0GCZOETgl2cKHhGtiUTkBibLSgGnUWiY: match=False, dist=0.4989
+    - Checked: Swastima Khadka: The Actress Who Refuses | Dist: 0.4989 | Src: The Film Nepal
+[Debug] Verification result for https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTFS7veGp7_u5jxBnhQTg6fTm1DWHD7ltIMiI0dALrUZ9W7pXIy: match=False, dist=0.5879
+    - Checked: Author - Dreck-Records | Dist: 0.5879 | Src: Dreck-Records
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTzmuI6J-P7AP2PGP1SWEq4cW6uGVWPmfSszZTQMBvijvNj-9E0: match=False, dist=0.6938
+    - Checked: A black and white photo of a woman with  | Dist: 0.6938 | Src: Unsplash

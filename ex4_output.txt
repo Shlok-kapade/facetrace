@@ -1,0 +1,195 @@
+
+=================================================================
+  Face Identification & Blockchain Verification Pipeline
+  HH Goa 2026 -- Task 3 (Multi-Source Edition)
+=================================================================
+
+
+-----------------------------------------------------------------
+  [1/7] Face Detection & Encoding
+-----------------------------------------------------------------
+  Loading image: sample_data/ex4.jpeg
+  Detected 1 face(s)
+  Saved cropped face to: ./face_crop.jpg
+  Face encoding: 128-d vector (first 5 values: [-0.08282500505447388, 0.09061294794082642, -0.0031040506437420845, -0.03657260909676552, -0.09223343431949615]...)
+
+-----------------------------------------------------------------
+  [2/7] Local Face Database Lookup
+-----------------------------------------------------------------
+  No match in local database. Will proceed to web search.
+
+-----------------------------------------------------------------
+  [3/7] Multi-Engine Web Search (SerpApi)
+-----------------------------------------------------------------
+  Uploading image to temporary host...
+  Uploaded to: https://files.catbox.moe/bbx7sp.jpg
+    [Engine 1/3] Google Lens...
+    [Engine 1/3] Google Lens...
+    [Engine 1/3] Google Lens: 60 result(s)
+    [Engine 1/3] Google: 30 result(s)
+    [Engine 2/3] Yandex Images...
+    [Engine 2/3] Yandex Images...
+    [Engine 2/3] Yandex: 91 result(s)
+    [Engine 2/3] Yandex: 30 result(s)
+    [Engine 3/3] Google Reverse Image...
+    [Engine 3/3] Google Reverse Image...
+    [Engine 3/3] Google Reverse: 0 result(s)
+    [Engine 3/3] Google: 0 result(s)
+  Total: 60 results → 57 unique after dedup
+  [Pass 1] Biometrically checking candidate thumbnails (max 30)...
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRe277uJdoIgwzh4gYPSzAtq49Czg3MpSAGX3vP5iUUEii39zn8: match=True, dist=0.1681
+    - Checked: 🎮 Belated Happy Birthday to the backbone | Dist: 0.1681 | Src: Instagram
+    ✓ Verified match: 🎮 Belated Happy Birthday to th... (Dist: 0.1681)
+[Debug] Verification result for https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSZl94p92yeei39GfUGi_7R5lETGjJXW815R0q4NMx23CL8yrV3: match=False, dist=0.7132
+    - Checked: News: The program 'What The Flop' aired  | Dist: 0.7132 | Src: Instagram
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRCN1l0Rjva69C2a4e74HZAgDXvOKwdVgojeihi-Ffi40iFJnh: match=True, dist=0.2178
+    - Checked: BeastBoyShub big fan RB on X: "🎮 Belated | Dist: 0.2178 | Src: x.com
+    ✓ Verified match: BeastBoyShub big fan RB on X: ... (Dist: 0.2178)
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR5Zfzq96NBLCzzsrLfRCYGYPjtb_gley7KO_RZeVhPTlU7cf8e: match=True, dist=0.2432
+    - Checked: BeastBoyShub | Spotify | Dist: 0.2432 | Src: Spotify
+    ✓ Verified match: BeastBoyShub | Spotify... (Dist: 0.2432)
+[Debug] Verification result for https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRzIjl7cHIvKcfxbJjDaf2b4o6UAUIuOLgqg6uQQCRC5hqKVdr7: match=True, dist=0.2178
+    - Checked: BeastBoyShub Age, Bio, Net Worth, Career | Dist: 0.2178 | Src: Sportskeeda Wiki
+    ✓ Verified match: BeastBoyShub Age, Bio, Net Wor... (Dist: 0.2178)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB4rKVqE9MZl-j_wkovvgMSFmE7oSEwWphR41cvxqKhchsiJ6C: match=True, dist=0.3031
+    - Checked: Beast - Youtube sends some epic stuff 😂😂 | Dist: 0.3031 | Src: Facebook
+    ✓ Verified match: Beast - Youtube sends some epi... (Dist: 0.3031)
+  [NameSearch] Extracted person name(s): ['Chris Brown', 'Rajpal Yadav', 'Art Store', 'Beastboyshub Beast', 'Beastboyshub Famous']
+  [NameSearch] Trying 5 candidate name(s): ['Chris Brown', 'Rajpal Yadav', 'Art Store', 'Beastboyshub Beast', 'Beastboyshub Famous']
+    [NameSearch] Searching for 'Chris Brown'...
+    [NameSearch] Found Knowledge Graph with 4 profile(s)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_NizNC8Zes4mXRHkFKU1bNeoDxLRO7Y_FTnfE_OPKGw&s=10: match=False, dist=0.8291
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLkS0J3RiWjAXMBPW8a29ZbTyzGJp2Ou5toi9TioVDow&s=10: match=False, dist=0.7564
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5AgaD4wMbv2PzXKUYIF4k24g-FNaogiQ0D8jHp1Zy3Q&s=10: match=False, dist=0.7312
+      ✗ Instagram: https://www.instagram.com/chrisbrownofficial (dist=0.7312)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMos0-VSrGabzdBrIjmIRff50gVpIavpDuuw8FcluqVg&s=10: match=False, dist=0.6995
+      ✗ YouTube: https://www.youtube.com/channel/UCcYrdFJF7hmPXRNaWdrko4w (dist=0.6995)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ctP6-I-Eff9tOEaaVE8Zd6aUS3sSmRtYByHIyOAN5Q&s=10: match=False, dist=0.7648
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUyUJfyxZhIVV2aAzi9yn86mbLEYRfv2-3rDr19L1Wiw&s=10: match=False, dist=0.7466
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzeQqyPPqzFsdz1WE_Wh4gvcdmspa7ePpvFWWZCbf-1A&s=10: match=False, dist=0.5921
+      ✗ X (Twitter): https://twitter.com/chrisbrown (dist=0.5921)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvImmLNTWcy1I1kWtQ-OlyPmPxiFV5mIp7VvsD38UsxA&s=10: match=False, dist=0.7553
+      ✗ Facebook: https://www.facebook.com/chrisbrown (dist=0.7553)
+    [NameSearch] Searching for 'Rajpal Yadav'...
+    [NameSearch] Found Knowledge Graph with 4 profile(s)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlYH7HLE4XNCw_XsCu759DRBtefuFyk5vIUX_gDUPPpw&s=10: match=False, dist=0.5871
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN_nfgTU7CHWp7pxolxEvlM1-Z1McUZx3bP2Ce_umYJg&s=10: match=False, dist=0.5533
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_FDG6KfR2vok8FG1-3BaoxE3G1BlRs53LKSLtKmGCgQ&s=10: match=False, dist=0.6323
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcTXcQRVLwp1y5reOGy5bzP_ueFsykPiIDElTdVjekSg&s=10: match=False, dist=0.6450
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGG8bvNdT20uS6pmdCuP6GQfBeOhqwYbjf2E0lX-eejA&s=10: match=False, dist=0.5763
+      ✗ Instagram: https://www.instagram.com/rajpalofficial/ (dist=0.5533)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3TvOIy-llihBzHe8jrZ6xUes8m9uoSw1yopmOEtWNIQ&s=10: match=False, dist=0.6091
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPxV3PXm1OuQGxol1dykudj0fEw5wr0sZYZhBkwKAeOQ&s=10: match=False, dist=0.6843
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHQqSj86XdzLHw_jftfc0Q3rM-PVu24YZkF38gnZZDnw&s=10: match=False, dist=0.6025
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMC-7Pvky5vXYa1dbvkokmXsK4X-VqltFtZ4HZj1u5Eg&s=10: match=False, dist=0.6190
+      ✗ Facebook: https://www.facebook.com/therajpalyadav/ (dist=0.6025)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdndMoy4t-roOLhNmsOI9cIzBEWlr_-dG-QBslUnOpVw&s=10: match=False, dist=0.5937
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbni3LgLVr5dR0okfa6Ke7eQ_uCK2OAPRo3NdTfInuxQ&s=10: match=False, dist=0.5878
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScN6p52_1sKui92oHQCctzpSispKvNVRt8O_M4-qka-Q&s=10: match=False, dist=0.6146
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZWjVvrGmFK2SdWGPJiQsTlHmc-WUxqifLsZNZ8Fryww&s=10: match=False, dist=0.6399
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZwsy6UBJdb-e69jfkzQZcCkFoMSiBFXwMEhXjIaUaAQ&s=10: match=False, dist=0.6126
+      ✗ X (Twitter): https://twitter.com/rajpalofficial (dist=0.5878)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlYH7HLE4XNCw_XsCu759DRBtefuFyk5vIUX_gDUPPpw&s=10: match=False, dist=0.5871
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN_nfgTU7CHWp7pxolxEvlM1-Z1McUZx3bP2Ce_umYJg&s=10: match=False, dist=0.5533
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_FDG6KfR2vok8FG1-3BaoxE3G1BlRs53LKSLtKmGCgQ&s=10: match=False, dist=0.6323
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD38YyKZ2MPcnSc7z_69hdPIBZNIqFmH1QEMxjq0QLUQ&s=10: match=False, dist=0.5932
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcTXcQRVLwp1y5reOGy5bzP_ueFsykPiIDElTdVjekSg&s=10: match=False, dist=0.6450
+      ✗ Threads: https://www.threads.com/@rajpalofficial (dist=0.5533)
+      - Rajpal Naurang Yadav (@rajpalofficial) | https://www.instagram.com/rajpalofficial/?hl\u003d (no photo)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3TvOIy-llihBzHe8jrZ6xUes8m9uoSw1yopmOEtWNIQ&s=10: match=False, dist=0.6091
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPxV3PXm1OuQGxol1dykudj0fEw5wr0sZYZhBkwKAeOQ&s=10: match=False, dist=0.6843
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHQqSj86XdzLHw_jftfc0Q3rM-PVu24YZkF38gnZZDnw&s=10: match=False, dist=0.6025
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMC-7Pvky5vXYa1dbvkokmXsK4X-VqltFtZ4HZj1u5Eg&s=10: match=False, dist=0.6190
+      ✗ Rajpal Naurang Yadav (@therajpalyadav) | https://www.facebook.com/therajpalyadav/ (dist=0.6025)
+    [NameSearch] Searching for 'Art Store'...
+    [NameSearch] Searching for 'Beastboyshub Beast'...
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzd7bxsNest2VsOOzZ7GMf8h6RQG-12fh3bmLQZlvAgQ&s=10: match=False, dist=0.4758
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSxTkTwoP51VzMQO_yR3jdl8YVvt9yeeCPUazgIMmYSA&s=10: match=False, dist=0.5486
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZx5xH9_TWJFr6CygYoOxj1Iu-goALCwoKPW_e1zgM4g&s=10: match=False, dist=0.5098
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkNfp9qLIPv79-Uw_bacsD0WfbsAsZPqrYYlObAPPPpw&s=10: match=False, dist=0.6504
+      ✗ Beast Boy Shub (@BeastBoyShub) | https://www.facebook.com/BeastBoyShub/ (dist=0.4758)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiksFm_f9c-xfS6sYQAT0RXnl5GUKaKJWpsOkf7OBt-g&s: match=False, dist=0.4934
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsUj66xz2K5b2IViwrEM_TLwsOnl8hoEZifWJZUVLCFQ&s: match=True, dist=0.3818
+      ✓ BeastBoyShub | https://www.youtube.com/channel/UCI86prlqXhbkREDMT (dist=0.3818)
+  [NameSearch] ✓ Found verified profile: https://www.youtube.com/channel/UCI86prlqXhbkREDMTaORvLQ (dist=0.3818)
+  [Resolver] Direct extraction: https://www.instagram.com/p/DXzIGMJDBDt/... → https://www.instagram.com/beastboyshubbigfanrb/
+  [Resolver] Upgraded: https://www.instagram.com/p/DXzIGMJDBDt/ → https://www.instagram.com/beastboyshubbigfanrb/
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYubkUd-uR8VIaE7t_y74x97URp3KbKxIWiRzdPNuWkg&s=10: match=False, dist=0.7442
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu5ISIoEYVnbqzJJLTgIxDo0lKaJmyTGlUntx9b5yj7A&s=10: match=False, dist=0.6325
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQziT3Pixt0anHbdakf0Esqu6B0-ckZa5k1TD0MrZ0Wuw&s=10: match=True, dist=0.4721
+  [Resolver] ✓ Profile photo VERIFIED (dist=0.4721)
+  [Resolver] Direct extraction: https://x.com/BBSBigfanRB/status/2050121... → https://x.com/BBSBigfanRB
+  [Resolver] Upgraded: https://x.com/BBSBigfanRB/status/2050121 → https://x.com/BBSBigfanRB
+  [Resolver] ? Could not verify profile photo. Keeping original post URL.
+  [Resolver] Searching for profile matching post title...
+  Best match [PROFILE]: BeastBoyShub (name_search)
+  URL: https://www.youtube.com/channel/UCI86prlqXhbkREDMTaORvLQ
+  Registering newly identified person in local database...
+  Registered as DB ID #1
+
+-----------------------------------------------------------------
+  [5/7] Cryptographic Fingerprinting
+-----------------------------------------------------------------
+  Building canonical verification record...
+  Record fields: ['source_url', 'page_title', 'face_crop_hash', 'face_encoding_hash', 'matched_image_url', 'timestamp']
+  SHA-256 fingerprint: 4b9c066f79f812b673b2fdecc1a2d1ecda9059cbe9fc86ecd8d900380ef16dae
+
+-----------------------------------------------------------------
+  [6/7] Blockchain Upload
+-----------------------------------------------------------------
+  Initializing local Ethereum test chain (EthereumTesterProvider)...
+  Chain ready -- using account: 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf
+  Account balance: 1000000 ETH
+  Installing Solidity compiler v0.8.19...
+  Compiling contract: /home/finex/Desktop/projects/uncompleted/hackgoa/contracts/FaceVerification.sol
+  Compilation successful -- ABI has 5 entries
+  Deploying FaceVerification contract...
+/home/finex/Desktop/projects/uncompleted/hackgoa/venv/lib/python3.14/site-packages/cached_property.py:27: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+  if asyncio.iscoroutinefunction(self.func):
+  Contract deployed at: 0xF2E246BB76DF876Cef8b38ae84130F4F55De395b
+  Deploy tx hash: ff776e221418e5344645912321b692977e62b963b12eff1644b97068dbd70558
+  Block number: 1
+  Submitting record to blockchain...
+    URL: https://www.youtube.com/channel/UCI86prlqXhbkREDMTaORvLQ
+    Hash: 4b9c066f79f812b673b2fdecc1a2d1ecda9059cbe9fc86ecd8d900380ef16dae
+  Record uploaded successfully!
+    Record ID: 0
+    Tx hash: 859dcbff0fb75cedb065d9bc7fe3c067afd29244e6ce293c8bc57353a411f38d
+    Block: 2
+
+-----------------------------------------------------------------
+  [7/7] On-Chain Re-Verification
+-----------------------------------------------------------------
+  Re-computing hash independently from original record data...
+  Recomputed hash: 4b9c066f79f812b673b2fdecc1a2d1ecda9059cbe9fc86ecd8d900380ef16dae
+  Reading record #0 from blockchain...
+    On-chain hash:   4b9c066f79f812b673b2fdecc1a2d1ecda9059cbe9fc86ecd8d900380ef16dae
+    Recomputed hash: 4b9c066f79f812b673b2fdecc1a2d1ecda9059cbe9fc86ecd8d900380ef16dae
+    On-chain URL:    https://www.youtube.com/channel/UCI86prlqXhbkREDMTaORvLQ
+    Submitter:       0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf
+  VERIFICATION PASSED -- Record is authentic and untampered!
+
+=================================================================
+  PIPELINE COMPLETE -- SUMMARY
+=================================================================
+  Input image:       sample_data/ex4.jpeg
+  Faces detected:    1
+  Identity:          BeastBoyShub
+  Identity URL:      https://www.youtube.com/channel/UCI86prlqXhbkREDMTaORvLQ
+  Match Source:      Web Search (Verified)
+  Record hash:       4b9c066f79f812b673b2fdecc1a2d1ecda9059cbe9fc86ecd8d900380ef16dae
+  Blockchain:        Local Ethereum (eth-tester)
+  Contract:          0xF2E246BB76DF876Cef8b38ae84130F4F55De395b
+  Record ID:         0
+  Tx hash:           859dcbff0fb75cedb065d9bc7fe3c067afd29244e6ce293c8bc57353a411f38d
+
+  +---------------------------------------------------+
+  |  VERIFICATION: PASSED                             |
+  |  The on-chain record matches the original data.   |
+  |  Record is authentic and untampered.              |
+  +---------------------------------------------------+
+
+  Total time: 135.1s
+=================================================================
+
+<sys>:0: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/.solcx-lock-0.8.19' mode='w' encoding='UTF-8'>

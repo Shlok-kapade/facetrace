@@ -1,0 +1,228 @@
+
+=================================================================
+  Face Identification & Blockchain Verification Pipeline
+  HH Goa 2026 -- Task 3 (Multi-Source Edition)
+=================================================================
+
+
+-----------------------------------------------------------------
+  [1/7] Face Detection & Encoding
+-----------------------------------------------------------------
+  Loading image: sample_data/ex5.jpeg
+  Detected 1 face(s)
+  Saved cropped face to: ./face_crop.jpg
+  Face encoding: 128-d vector (first 5 values: [-0.16038645803928375, 0.08576629310846329, 0.071841299533844, -0.010990005917847157, -0.030158942565321922]...)
+
+-----------------------------------------------------------------
+  [2/7] Local Face Database Lookup
+-----------------------------------------------------------------
+  No match in local database. Will proceed to web search.
+
+-----------------------------------------------------------------
+  [3/7] Multi-Engine Web Search (SerpApi)
+-----------------------------------------------------------------
+  Uploading image to temporary host...
+  Uploaded to: https://files.catbox.moe/pnc9p9.jpg
+    [Engine 1/3] Google Lens...
+    [Engine 1/3] Google Lens...
+    [Engine 1/3] Google Lens: 60 result(s)
+    [Engine 1/3] Google: 30 result(s)
+    [Engine 2/3] Yandex Images...
+    [Engine 2/3] Yandex Images...
+    [Engine 2/3] Yandex: 103 result(s)
+    [Engine 2/3] Yandex: 30 result(s)
+    [Engine 3/3] Google Reverse Image...
+    [Engine 3/3] Google Reverse Image...
+    [Engine 3/3] Google Reverse: 9 result(s)
+    [Engine 3/3] Google: 9 result(s)
+  Total: 69 results → 68 unique after dedup
+  [Pass 1] Biometrically checking candidate thumbnails (max 30)...
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRuDB7wyakmCH64cr55g5r6NWkTl2NX53j4eiesthUZM-XXPsGm: match=False, dist=0.8559
+    - Checked: ASOS DESIGN essentials relaxed fit hoodi | Dist: 0.8559 | Src: ASOS
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8BK5PwOGafsSfUoSVaugtxhaYaQL_zhjgsOBnJ3smphD4e6ts: match=False, dist=0.8254
+    - Checked: Soft Boxy Garment Dye Hoodie Sweatshirt  | Dist: 0.8254 | Src: Levi's
+[Debug] Verification result for https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTnE9a5hDy1KFA-oykkDz-EOMiYey7wRaoU3iBkSkj7yVNZAIY-: match=False, dist=0.9002
+    - Checked: Men's Boxy Hoodie | Men's Tops | Hollist | Dist: 0.9002 | Src: Hollister Co.
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTZcEF280DJ8pEalRO2Pw2jBzl7vsF_vJoRoI_YrYU8o6jTbHsy: match=False, dist=0.8852
+    - Checked: Buy Neutral EDIT Boxy Fit Heavyweight Ho | Dist: 0.8852 | Src: Next US
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS5jsUqGeozEF146qH6qhyJUza5_Z0NWb-BcUzpt6Ya9LvS9erh: match=False, dist=0.8610
+    - Checked: AE Laidback Luxe Heavyweight Hoodie | Am | Dist: 0.8610 | Src: AE Laidback Luxe Heavyweight Hoodie | American Eagle
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS5T3ekWaOIGZUjZfdQo4uwSPpnHFHD9wIrn-8_xgM_pC7oySii: match=False, dist=0.7745
+    - Checked: Men's Beige Oversized Sports Hoodie with | Dist: 0.7745 | Src: H&M
+[Debug] Verification result for https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQq5AOJlV1aCk3PPQuUac9Ewr3K3uuUVTCFyA5zv1wn47f6Pnmz: match=False, dist=0.9348
+    - Checked: Buy Blakely Mens Tan Idris Oversized Hoo | Dist: 0.9348 | Src: Blakely Clothing
+[Debug] Verification result for https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQnQ20iRMdZMDItbkRJE-u4vnaa-KTJGvlEsQPQ1vKVz4TX7sw8: match=False, dist=0.7918
+    - Checked: DH Essentials Acid Wash Fleece Pullover  | Dist: 0.7918 | Src: DTLR
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSFkWsFO2Zmn8AH-hXLokVMu9tzv4MPNIf074lnr9zcmUXqYFdy: match=False, dist=0.7420
+    - Checked: Fear of God ESSENTIALS Homestead Heather | Dist: 0.7420 | Src: Pacsun
+[Debug] Verification result for https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRdm8dryyAxgoAaQtQRTGIcwsowm_NYxtMyhK2xDTUU9r2jRQ6z: match=False, dist=0.7493
+    - Checked: Blank Knights Ivory Sweatshirts for Men  | Dist: 0.7493 | Src: Amazon.com
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYDREqYDqDW8LrSgIO_KTt2fVMOwQy--ObbYgk0BPg7xLiIxjs: match=False, dist=0.6997
+    - Checked: Gymshark Rest Day Essentials Hoodie - St | Dist: 0.6997 | Src: Gymshark
+[Debug] Verification result for https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS37UggVeAyC39rlO-z4uy08Ji87Mwz86cEKHTIB1LbInKt3V-J: match=False, dist=0.7783
+    - Checked: Sur Hoodie - Faded Sand | Dist: 0.7783 | Src: vntnaco.com
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZFMne3LgKKOw3lv5133dwohCcsifUcDcQY31Ps9MaOBkD33xn: match=False, dist=0.7005
+    - Checked: Hoodies and sweatshirts Fear of God Esse | Dist: 0.7005 | Src: Footshop
+[Debug] Verification result for https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSQq6ded49aDfcXCrtk5HDOvKjMYI9T_yHPCFurCD4oTkei_-5o: match=False, dist=0.6698
+    - Checked: Independent Trading Co. Men's Sandstone  | Dist: 0.6698 | Src: Merchology
+[Debug] Verification result for https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS-U0UiPoJOfvIAlBWhzy4KpsIhZYvOE-yClHDerMMr8PzQKtK7: match=False, dist=0.8328
+    - Checked: AURALEE Brown Smooth Soft Sweat Hoodie A | Dist: 0.8328 | Src: CLOTHBASE
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfmELtk_MT0ZZtWMw17CFlbThKydKU-AwJLt72xRN7btWZWc63: match=False, dist=0.7757
+    - Checked: ASOS DESIGN heavyweight relaxed hoodie w | Dist: 0.7757 | Src: ASOS
+  [Pass 1] No thumbnails passed verification (16 checked).
+
+  [Pass 2] Extracting candidate names from 68 result titles...
+  [Pass 2] Candidate names: ['Ajay Verma', 'Asos Design', 'Binance Square', 'Classic Hoodie', 'Amitabha Dey - Youtube', 'Auralee Brown', 'Bitcoin Rebounds', 'Blank Knights Ivory Sweatshirts', 'Gymshark Rest Day', 'John Elliott Villain Slim-fit', 'Junkyard Cloud Comfort Hoodie Light', 'Mens Tan Idris', 'Mishra Wiki', 'Plain Hoodie - Light', 'Riyaz Aly ❤ Dear', 'Sreehari K', 'Sur Hoodie - Faded Sand', 'Многие Из Нас']
+  [NameSearch] Trying 18 candidate name(s): ['Ajay Verma', 'Asos Design', 'Binance Square', 'Classic Hoodie', 'Amitabha Dey - Youtube', 'Auralee Brown', 'Bitcoin Rebounds', 'Blank Knights Ivory Sweatshirts', 'Gymshark Rest Day', 'John Elliott Villain Slim-fit', 'Junkyard Cloud Comfort Hoodie Light', 'Mens Tan Idris', 'Mishra Wiki', 'Plain Hoodie - Light', 'Riyaz Aly ❤ Dear', 'Sreehari K', 'Sur Hoodie - Faded Sand', 'Многие Из Нас']
+    [NameSearch] Searching for 'Ajay Verma'...
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmNUSuJkqIBpqJJpkdKehKk0ewhRUPs-SmOYyiBAvFBw&s=10: match=False, dist=0.6591
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmS39iQMo8Py5KS818mP_zbQeCfHWr8lqtw6pTcuCqYQ&s=10: match=False, dist=0.6432
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzX4V0Gk1rZJ9eCTTvXO6EnywclU-wv2jNxepFfdcrRA&s=10: match=False, dist=0.7259
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYz6q0LjarSWUprPoMAaqDoCIa_l_XSfOgR5uiaa4ClA&s=10: match=False, dist=0.6657
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhRWoxY8Vce_dPUOQPzhiscTlYOkLiKhxhLDSNNEyCGg&s=10: match=False, dist=0.6562
+      ✗ Ajay Verma - Neuroscientist, neurologist | https://www.linkedin.com/in/ajay-verma-22971115 (dist=0.6432)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlnjW660q4aX15JPl0EEiL88LF9RzKC_wuGzQXm1-z9g&s: match=False, dist=0.7979
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpgt3hiZ7IoL7ZAkXCA85kyOI3HD51j0RccmjO8HZEtA&s=10: match=False, dist=0.7921
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbzOJgFVpQBKR1QHJxS1UuJb9LJoa9HCQyS9fxZvI3aQ&s=10: match=False, dist=0.7462
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZeoLbPAPlJG85gGaRW3Ugj5bjuMmsVsqrKIafFTYH1A&s=10: match=False, dist=0.7287
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAgG5-w1-xoxgky8uUc91PFTq4mSSJxkK7UpwD8uSiMA&s=10: match=False, dist=0.7350
+      ✗ Ajay Verma (@ajayvermaajay) | https://www.instagram.com/ajayvermaajay/ (dist=0.7287)
+    [NameSearch] Searching for 'Asos Design'...
+    [NameSearch] Searching for 'Binance Square'...
+    [NameSearch] Searching for 'Classic Hoodie'...
+    [NameSearch] Searching for 'Amitabha Dey - Youtube'...
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ22EOG9Q1AXyJKQdWKRp5oA6gBJghfJV__cBC7CabhQw&s=10: match=False, dist=0.6802
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTAIUFYZMFWeZWx8rBvAbpWr0KsVNzM7mjkkPLmC-XRg&s=10: match=False, dist=0.7319
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQRQfU9l6OuX4CCMAPCEx1rDhY8CDWI1zE-CJR-OYqKA&s: match=False, dist=0.8530
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzPMKAcCFJ3xlQprQdDfAW3auPqXa8KEKzsXmn3Br8_Q&s=10: match=False, dist=0.7690
+      ✗ Amitabha Dey | https://www.youtube.com/c/amitabhadey (dist=0.6802)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbrm-sD-utWLT9PwXwvl5ETFSOb-g5C9PYbe4bJzXKvg&s: match=False, dist=0.7318
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQID_Bpp_9TCwTdO6pff2_OsyeMX2SlU0xSGnmEjeZzQ&s=10: match=False, dist=0.6207
+      ✗ AMITABHA DEY | https://www.youtube.com/channel/UCnGSisGJVfEuhMSDa (dist=0.6207)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi-J5obQPNlq2--Z8xYoAWD8rEMjHJ_1Xp0txX3FF0Hg&s=10: match=False, dist=0.6930
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9vFPjbu7s1xDN8XhWQwtrXooTmlck9OmcbVcWC4awSg&s=10: match=False, dist=0.6732
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOfTiWp5RPUxkpxo7ZYKZJgmKviJgi2_cqjY64aP388w&s=10: match=False, dist=0.5523
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKXey2LlM-zuDZNPVZRmXdH_4tpogy5xdpZA8fv8RLpw&s=10: match=False, dist=0.6460
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrK4ighFodTbWr7vLbD4lTt61PWtZBOB7mBGganU2AEQ&s: match=False, dist=0.6488
+      ✗ Amitabha Dey - Senior Data Scientist at  | https://www.linkedin.com/in/amitabhadey (dist=0.5523)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS86hNB84mAvXV9k0C1BhTcUlleyUrJ2XAe1Hu0ZwIppA&s: match=False, dist=0.6427
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREzT7LZyubcW7RewGD7o2CV6ukoHnTFGr9Xr7Yf47Reg&s: match=False, dist=0.6580
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMJ0icxnpvoq81CiCUSRZLozJBn5c8CUhhIu1Za37KhA&s: match=False, dist=0.6307
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHktF-F78waqbSPfd3mWQFJ3hneUnHvXnMG1_4Uqtr9Q&s=10: match=False, dist=0.8600
+      ✗ Amitabha Dey (@amitabha07) | https://www.instagram.com/amitabha07/ (dist=0.6307)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-iwHuUxGg4lqpPpJclhS2ET50Qw-fXsXZ3KdJeDsWDQ&s=10: match=False, dist=0.8718
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7NqNegaw7oItxd6rbqJMGyq8SzB5R-OZ8iV9P0FZnaA&s: match=False, dist=0.7184
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJPDQiZMQLfsOymI-3xgMGG5qDvLLii7-_mMpZbtTZgw&s=10: match=False, dist=0.5334
+      ✗ amitabha dey | https://www.youtube.com/@amitabhadey4018 (dist=0.5334)
+    [NameSearch] Searching for 'Auralee Brown'...
+    [NameSearch] Searching for 'Bitcoin Rebounds'...
+    [NameSearch] Searching for 'Blank Knights Ivory Sweatshirts'...
+      - Blank Knights (@blankknights_) · Clifton | https://www.instagram.com/blankknights_/?hl\u003de (no photo)
+    [NameSearch] Searching for 'Gymshark Rest Day'...
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Ld-rPJPye8ncucTxlme2QH0GwbdaMJmDre_QXYVHV-IZpU8ZQ53f_Q&s: match=False, dist=0.8703
+      ✗ @gymshark Rest Day Collection is #gymsha | https://www.tiktok.com/@brodieshredzz/video/717900 (dist=0.8703)
+    [NameSearch] Searching for 'John Elliott Villain Slim-fit'...
+    [NameSearch] Searching for 'Junkyard Cloud Comfort Hoodie Light'...
+[Debug] Verification result for https://serpapi.com/searches/6a9dacf5e171b95d71cb1eef/images/fpG37rTvaKCIgf93Ffd9pKeMfDgksZ08ONoXOdzCY2s.jpeg: match=False, dist=0.8378
+      ✗ Is it worth it to buy the viral comfort  | https://www.tiktok.com/@readthepage/video/75535982 (dist=0.8378)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfIm1BNof9TAg1YcG5BnRwvp1jtFJa4s3GikfuShbNeg&s=10: match=False, dist=0.8599
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV8PAqr_k5GCluIvqfoLte-ySgQuiJUkHyVh1U-fjgXA&s=10: match=False, dist=0.9762
+      ✗ Lightweight yet cozy, this hoodie keeps  | https://www.facebook.com/comfrtclothing/videos/the (dist=0.8599)
+    [NameSearch] Searching for 'Mens Tan Idris'...
+[Debug] Verification result for https://serpapi.com/searches/6a9dacfea3882d6d20b36ea5/images/jMmMCmfYLwZEO_gmfn81rsmsDIK2cwEK9mV3yhqfjBE.jpeg: match=False, dist=0.6831
+      ✗ Idris Elba in Calvin Klein Menswear | Sp | https://www.facebook.com/CalvinKlein/videos/idris- (dist=0.6831)
+    [NameSearch] Searching for 'Mishra Wiki'...
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIbaf2-yXP9-0J6WCC0vFl7P64JKEQth_d5umwf2M5V0C2yE3c5-6W&usqp=CAE&s: match=False, dist=0.7391
+      ✗ Mohit Mishra Wiki | https://www.instagram.com/popular/mohit-mishra-wik (dist=0.7391)
+    [NameSearch] Searching for 'Plain Hoodie - Light'...
+    [NameSearch] Searching for 'Riyaz Aly ❤ Dear'...
+    [NameSearch] Searching for 'Sreehari K'...
+      - Sreehari K (@sreehariachunair) - Instagr | https://www.instagram.com/sreehariachunair/?hl\u00 (no photo)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXD2JcWNjffpTBqz29ZR9iXeTNjWDzw8kXsCkJjJWAQA&s=10: match=False, dist=0.7359
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlp7mdNew31sNv4ssSo6g_BH4gOFZSyCYx_so493Q3Rg&s=10: match=False, dist=0.6711
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDYJArqNS16iNvP0DMzYFTO6_Pk7r7KJUKHbXZMKcinQ&s=10: match=False, dist=0.6064
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmLSFZOnLE7yKVNWU9CDudIURxbyv_Z8AjkHcrNBmCtA&s=10: match=False, dist=0.6585
+      ✗ Sreehari K (@sreehariachunair) | https://www.facebook.com/sreehariachunair/ (dist=0.6064)
+      - Sreehari K (@sreehariachunair) | https://www.instagram.com/sreehariachunair/reels/? (no photo)
+    [NameSearch] Searching for 'Sur Hoodie - Faded Sand'...
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcFrkr_XZJ-e4p--bS1Uq0KS004YFZdNhECzFFP6jVGzvhxmHc1LLwYw&s: match=False, dist=0.7478
+      ✗ diy sun faded hoodie #diy #diyclothes #c | https://www.tiktok.com/@ebancorona/video/748730003 (dist=0.7478)
+    [NameSearch] Searching for 'Многие Из Нас'...
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGYGe0TDcZ5dzS_Fj5cIT6ZQT8w2ggcj9_76ThG89DYg&s=10: match=False, dist=0.8660
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_ChaU8K4h22Axiio1CxmqkyKXJWD7XCT4xX34xDdQnw&s=10: match=False, dist=0.7489
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz6m3uEiVjIcnOsUSkrDBXHUys44NoaNhvTL4mTegpSg&s=10: match=False, dist=0.8776
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkxShzCb1DkXgKtWUCeOYF9_-AS0Z4Iowt_7Tqgndu6Q&s=10: match=False, dist=0.7160
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNKx0uR9-BCVayvs_o9ItN1ZVefYSc27qB4MsXrdDaIg&s=10: match=False, dist=0.7610
+      ✗ Какой же мурашечный был вечер ...и так м | https://www.tiktok.com/@parshoota/video/7060147417 (dist=0.7160)
+  [Verifier] No matches found via thumbnail or name-based search.
+
+  WARNING: No web matches found for this face, or matches were rejected as look-alikes.
+  Registering person as 'Unknown #1' in local database...
+  Registered as DB ID #1
+
+-----------------------------------------------------------------
+  [5/7] Cryptographic Fingerprinting
+-----------------------------------------------------------------
+  Building canonical verification record...
+  Record fields: ['source_url', 'page_title', 'face_crop_hash', 'face_encoding_hash', 'matched_image_url', 'timestamp']
+  SHA-256 fingerprint: 9817258d5e3bb14e078ef02a4454fb50ef23e73c2986239325a4d0a0bd91ae4f
+
+-----------------------------------------------------------------
+  [6/7] Blockchain Upload
+-----------------------------------------------------------------
+  Initializing local Ethereum test chain (EthereumTesterProvider)...
+  Chain ready -- using account: 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf
+  Account balance: 1000000 ETH
+  Installing Solidity compiler v0.8.19...
+  Compiling contract: /home/finex/Desktop/projects/uncompleted/hackgoa/contracts/FaceVerification.sol
+  Compilation successful -- ABI has 5 entries
+  Deploying FaceVerification contract...
+/home/finex/Desktop/projects/uncompleted/hackgoa/venv/lib/python3.14/site-packages/cached_property.py:27: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+  if asyncio.iscoroutinefunction(self.func):
+  Contract deployed at: 0xF2E246BB76DF876Cef8b38ae84130F4F55De395b
+  Deploy tx hash: ff776e221418e5344645912321b692977e62b963b12eff1644b97068dbd70558
+  Block number: 1
+  Submitting record to blockchain...
+    URL: local://db/faces/1
+    Hash: 9817258d5e3bb14e078ef02a4454fb50ef23e73c2986239325a4d0a0bd91ae4f
+  Record uploaded successfully!
+    Record ID: 0
+    Tx hash: 27138565d93d432273e40b9c8b4d0945a1c16eb4a1974f09028ae6e34f7562b6
+    Block: 2
+
+-----------------------------------------------------------------
+  [7/7] On-Chain Re-Verification
+-----------------------------------------------------------------
+  Re-computing hash independently from original record data...
+  Recomputed hash: 9817258d5e3bb14e078ef02a4454fb50ef23e73c2986239325a4d0a0bd91ae4f
+  Reading record #0 from blockchain...
+    On-chain hash:   9817258d5e3bb14e078ef02a4454fb50ef23e73c2986239325a4d0a0bd91ae4f
+    Recomputed hash: 9817258d5e3bb14e078ef02a4454fb50ef23e73c2986239325a4d0a0bd91ae4f
+    On-chain URL:    local://db/faces/1
+    Submitter:       0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf
+  VERIFICATION PASSED -- Record is authentic and untampered!
+
+=================================================================
+  PIPELINE COMPLETE -- SUMMARY
+=================================================================
+  Input image:       sample_data/ex5.jpeg
+  Faces detected:    1
+  Identity:          Unknown #1
+  Identity URL:      local://db/faces/1
+  Match Source:      Registered as new Unknown
+  Record hash:       9817258d5e3bb14e078ef02a4454fb50ef23e73c2986239325a4d0a0bd91ae4f
+  Blockchain:        Local Ethereum (eth-tester)
+  Contract:          0xF2E246BB76DF876Cef8b38ae84130F4F55De395b
+  Record ID:         0
+  Tx hash:           27138565d93d432273e40b9c8b4d0945a1c16eb4a1974f09028ae6e34f7562b6
+
+  +---------------------------------------------------+
+  |  VERIFICATION: PASSED                             |
+  |  The on-chain record matches the original data.   |
+  |  Record is authentic and untampered.              |
+  +---------------------------------------------------+
+
+  Total time: 276.2s
+=================================================================
+
+<sys>:0: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/.solcx-lock-0.8.19' mode='w' encoding='UTF-8'>

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FaceTrace — Face Identification & Blockchain Verification</title>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --card: #141820;
+    --border: #1e2533;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --warn: #f5a623;
+    --error: #e74c3c;
+    --success: #2ecc71;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Header ── */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--card);
+  }
+  .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; }
+  .logo span { color: var(--accent); }
+  .tagline { color: var(--muted); font-size: 0.85rem; }
+  .badge {
+    margin-left: auto;
+    background: rgba(108,99,255,0.15);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Main layout ── */
+  main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 0;
+    height: calc(100vh - 64px);
+  }
+
+  /* ── Left panel ── */
+  .left-panel {
+    border-right: 1px solid var(--border);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+    background: var(--card);
+  }
+
+  .section-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── Drop zone ── */
+  .dropzone {
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: rgba(108,99,255,0.03);
+    position: relative;
+  }
+  .dropzone:hover, .dropzone.drag-over {
+    border-color: var(--accent);
+    background: rgba(108,99,255,0.08);
+  }
+  .dropzone input[type="file"] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+  .drop-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+  .drop-title { font-weight: 600; margin-bottom: 0.25rem; }
+  .drop-sub { font-size: 0.8rem; color: var(--muted); }
+
+  /* ── Preview ── */
+  .preview-wrap {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .preview-wrap.show { display: flex; }
+  .preview-img {
+    width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .face-crop-wrap {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .face-crop-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    display: none;
+  }
+  .face-info { font-size: 0.8rem; color: var(--muted); }
+
+  /* ── Run button ── */
+  .run-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .run-btn:hover:not(:disabled) { background: #7c74ff; transform: translateY(-1px); }
+  .run-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* ── Blockchain explain card ── */
+  .explain-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    background: rgba(0,212,170,0.03);
+    border-color: rgba(0,212,170,0.2);
+  }
+  .explain-card h4 {
+    color: var(--accent2);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .explain-steps { display: flex; flex-direction: column; gap: 0.5rem; }
+  .explain-step {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .step-num {
+    background: rgba(0,212,170,0.15);
+    color: var(--accent2);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+
+  /* ── Right panel ── */
+  .right-panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ── Status bar ── */
+  .status-bar {
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    background: var(--card);
+  }
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--muted);
+    transition: background 0.3s;
+  }
+  .status-dot.running { background: var(--accent); animation: pulse 1s infinite; }
+  .status-dot.done { background: var(--success); }
+  .status-dot.error { background: var(--error); }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* ── Log console ── */
+  .log-console {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    line-height: 1.7;
+    background: #0a0c10;
+  }
+  .log-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 0.75rem;
+    color: var(--muted);
+  }
+  .log-empty .big { font-size: 2.5rem; }
+  .log-line { display: flex; gap: 0.75rem; }
+  .log-ts { color: #334155; min-width: 60px; }
+  .log-msg { flex: 1; }
+  .log-line.stage .log-msg { color: var(--accent); font-weight: 700; }
+  .log-line.start .log-msg { color: var(--accent2); font-weight: 700; }
+  .log-line.success .log-msg { color: var(--success); }
+  .log-line.warn .log-msg { color: var(--warn); }
+  .log-line.error .log-msg { color: var(--error); }
+  .log-line.detail .log-msg { color: #94a3b8; padding-left: 1rem; }
+  .log-line.divider .log-msg { color: #1e2533; }
+  .log-line.info .log-msg { color: var(--text); }
+
+  /* ── Result card ── */
+  .result-panel {
+    border-top: 1px solid var(--border);
+    background: var(--card);
+    padding: 1.5rem;
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 42vh;
+    overflow-y: auto;
+  }
+  .result-panel.show { display: flex; }
+  .result-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .result-face {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+    flex-shrink: 0;
+  }
+  .result-identity { flex: 1; }
+  .result-name {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 0.2rem;
+  }
+  .result-name.unknown { color: var(--warn); }
+  .result-source { font-size: 0.8rem; color: var(--muted); }
+  .result-url a {
+    color: var(--accent2);
+    font-size: 0.8rem;
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .result-url a:hover { text-decoration: underline; }
+  .verified-badge {
+    background: rgba(46,204,113,0.15);
+    border: 1px solid var(--success);
+    color: var(--success);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .verified-badge.failed {
+    background: rgba(231,76,60,0.15);
+    border-color: var(--error);
+    color: var(--error);
+  }
+
+  .chain-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .chain-field {
+    background: #0d0f14;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.85rem;
+  }
+  .chain-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+  .chain-value {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent2);
+    word-break: break-all;
+  }
+  .chain-field.full { grid-column: 1 / -1; }
+
+  .elapsed-badge {
+    font-size: 0.75rem;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    font-family: var(--mono);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">Face<span>Trace</span></div>
+    <div class="tagline">AI Face Identification & Blockchain Verification</div>
+  </div>
+  <div class="badge">HackGoa 2026</div>
+</header>
+
+<main>
+  <!-- ── Left Panel ── -->
+  <div class="left-panel">
+    <div>
+      <div class="section-title">Upload Image</div>
+      <div class="dropzone" id="dropzone">
+        <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.webp">
+        <div class="drop-icon">🖼️</div>
+        <div class="drop-title">Drop a photo here</div>
+        <div class="drop-sub">or click to browse — JPG / PNG / WEBP</div>
+      </div>
+    </div>
+
+    <div class="preview-wrap" id="previewWrap">
+      <img class="preview-img" id="previewImg" src="" alt="Preview">
+      <div class="face-crop-wrap">
+        <img class="face-crop-img" id="faceCropImg" src="" alt="Detected face">
+        <div class="face-info" id="faceInfo"></div>
+      </div>
+    </div>
+
+    <button class="run-btn" id="runBtn" disabled>
+      <span id="btnIcon">🔍</span>
+      <span id="btnText">Identify Face</span>
+    </button>
+
+    <div class="explain-card">
+      <h4>⛓️ How Blockchain Works</h4>
+      <div class="explain-steps">
+        <div class="explain-step">
+          <div class="step-num">1</div>
+          <div>All evidence (face hash, profile URL, timestamp) is bundled and SHA-256 hashed into a 64-char fingerprint.</div>
+        </div>
+        <div class="explain-step">
+          <div class="step-num">2</div>
+          <div>That hash is pushed to an Ethereum smart contract on-chain, generating an immutable transaction hash.</div>
+        </div>
+        <div class="explain-step">
+          <div class="step-num">3</div>
+          <div>The hash is re-computed independently and compared to the on-chain value. Match = tamper-proof record.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Right Panel ── -->
+  <div class="right-panel">
+    <div class="status-bar">
+      <div class="status-dot" id="statusDot"></div>
+      <span id="statusText">Ready — upload an image to begin</span>
+      <span class="elapsed-badge" id="elapsedBadge" style="display:none"></span>
+    </div>
+
+    <div class="log-console" id="logConsole">
+      <div class="log-empty" id="logEmpty">
+        <div class="big">🧬</div>
+        <div>Pipeline logs will appear here</div>
+      </div>
+    </div>
+
+    <div class="result-panel" id="resultPanel">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</main>
+
+<script>
+  let currentJobId = null;
+  let selectedFile = null;
+  let logCount = 0;
+
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const previewWrap = document.getElementById('previewWrap');
+  const previewImg = document.getElementById('previewImg');
+  const faceCropImg = document.getElementById('faceCropImg');
+  const faceInfo = document.getElementById('faceInfo');
+  const runBtn = document.getElementById('runBtn');
+  const btnIcon = document.getElementById('btnIcon');
+  const btnText = document.getElementById('btnText');
+  const statusDot = document.getElementById('statusDot');
+  const statusText = document.getElementById('statusText');
+  const logConsole = document.getElementById('logConsole');
+  const logEmpty = document.getElementById('logEmpty');
+  const resultPanel = document.getElementById('resultPanel');
+  const elapsedBadge = document.getElementById('elapsedBadge');
+
+  // Drag-and-drop
+  dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('drag-over'); });
+  dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropzone.classList.remove('drag-over');
+    const f = e.dataTransfer.files[0];
+    if (f) handleFile(f);
+  });
+  fileInput.addEventListener('change', (e) => { if (e.target.files[0]) handleFile(e.target.files[0]); });
+
+  function handleFile(file) {
+    selectedFile = file;
+    const url = URL.createObjectURL(file);
+    previewImg.src = url;
+    previewWrap.classList.add('show');
+    runBtn.disabled = false;
+    resultPanel.classList.remove('show');
+    clearLogs();
+    setStatus('ready', `Ready — ${file.name}`);
+  }
+
+  function clearLogs() {
+    logCount = 0;
+    logConsole.innerHTML = '<div class="log-empty" id="logEmpty"><div class="big">🧬</div><div>Pipeline logs will appear here</div></div>';
+  }
+
+  function addLog(entry) {
+    const empty = document.getElementById('logEmpty');
+    if (empty) empty.remove();
+
+    const line = document.createElement('div');
+    line.className = `log-line ${entry.level || 'info'}`;
+
+    const d = new Date(entry.ts * 1000);
+    const ts = `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:${String(d.getSeconds()).padStart(2,'0')}`;
+
+    line.innerHTML = `<span class="log-ts">${ts}</span><span class="log-msg">${entry.msg}</span>`;
+    logConsole.appendChild(line);
+    logConsole.scrollTop = logConsole.scrollHeight;
+    logCount++;
+  }
+
+  function setStatus(state, text) {
+    statusDot.className = 'status-dot ' + state;
+    statusText.textContent = text;
+  }
+
+  function showResult(result) {
+    if (!result) return;
+
+    const isUnknown = result.is_unknown;
+    const isVerified = result.is_verified;
+
+    let urlHtml = '';
+    if (!isUnknown && result.identity_url && !result.identity_url.startsWith('local://')) {
+      urlHtml = `<div class="result-url"><a href="${result.identity_url}" target="_blank">${result.identity_url}</a></div>`;
+    }
+
+    let faceImgHtml = '';
+    if (result.face_crop) {
+      faceImgHtml = `<img class="result-face" src="/uploads/${result.face_crop}" alt="face">`;
+    }
+
+    resultPanel.innerHTML = `
+      <div class="result-header">
+        ${faceImgHtml}
+        <div class="result-identity">
+          <div class="result-name ${isUnknown ? 'unknown' : ''}">${result.identity}</div>
+          <div class="result-source">${result.match_source}</div>
+          ${urlHtml}
+        </div>
+        <div class="${isVerified ? 'verified-badge' : 'verified-badge failed'}">
+          ${isVerified ? '✓ VERIFIED' : '✗ FAILED'}
+        </div>
+      </div>
+      <div class="chain-grid">
+        <div class="chain-field">
+          <div class="chain-label">Record ID</div>
+          <div class="chain-value">#${result.record_id}</div>
+        </div>
+        <div class="chain-field">
+          <div class="chain-label">Block (Amoy)</div>
+          <div class="chain-value">#${result.block_number}</div>
+        </div>
+        <div class="chain-field full">
+          <div class="chain-label">Contract Address</div>
+          <div class="chain-value"><a href="https://amoy.polygonscan.com/address/${result.contract_address}" target="_blank" style="color:var(--accent2);text-decoration:none">${result.contract_address} ↗</a></div>
+        </div>
+        <div class="chain-field full">
+          <div class="chain-label">Transaction Hash</div>
+          <div class="chain-value"><a href="${result.explorer_url}" target="_blank" style="color:var(--accent2);text-decoration:none">${result.tx_hash} ↗</a></div>
+        </div>
+        <div class="chain-field full">
+          <div class="chain-label">SHA-256 Record Fingerprint</div>
+          <div class="chain-value">${result.record_hash}</div>
+        </div>
+      </div>
+    `;
+    resultPanel.classList.add('show');
+    elapsedBadge.textContent = `⏱ ${result.elapsed}`;
+    elapsedBadge.style.display = 'inline';
+
+    // Update face crop in preview
+    if (result.face_crop) {
+      faceCropImg.src = `/uploads/${result.face_crop}`;
+      faceCropImg.style.display = 'block';
+      faceInfo.textContent = `${result.faces_detected} face(s) detected`;
+    }
+  }
+
+  runBtn.addEventListener('click', async () => {
+    if (!selectedFile) return;
+
+    // Reset
+    clearLogs();
+    resultPanel.classList.remove('show');
+    elapsedBadge.style.display = 'none';
+    runBtn.disabled = true;
+    btnIcon.textContent = '⏳';
+    btnText.textContent = 'Processing...';
+    setStatus('running', 'Running pipeline...');
+
+    // Upload
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+
+    let jobId;
+    try {
+      const res = await fetch('/upload', { method: 'POST', body: formData });
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      jobId = data.job_id;
+      currentJobId = jobId;
+    } catch (err) {
+      setStatus('error', `Upload failed: ${err.message}`);
+      runBtn.disabled = false;
+      btnIcon.textContent = '🔍';
+      btnText.textContent = 'Identify Face';
+      return;
+    }
+
+    // Stream SSE logs
+    const evtSource = new EventSource(`/stream/${jobId}`);
+    evtSource.onmessage = (e) => {
+      const entry = JSON.parse(e.data);
+      if (entry.msg === '__DONE__') {
+        evtSource.close();
+        if (entry.status === 'done') {
+          setStatus('done', 'Pipeline complete ✓');
+          showResult(entry.result);
+        } else {
+          setStatus('error', `Error: ${entry.error}`);
+        }
+        runBtn.disabled = false;
+        btnIcon.textContent = '🔍';
+        btnText.textContent = 'Identify Face';
+        return;
+      }
+      addLog(entry);
+    };
+    evtSource.onerror = () => {
+      evtSource.close();
+      setStatus('error', 'Connection lost');
+      runBtn.disabled = false;
+      btnIcon.textContent = '🔍';
+      btnText.textContent = 'Identify Face';
+    };
+  });
+</script>
+</body>
+</html>

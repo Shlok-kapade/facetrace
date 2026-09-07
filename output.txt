@@ -1,0 +1,239 @@
+
+=================================================================
+  Face Identification & Blockchain Verification Pipeline
+  HH Goa 2026 -- Task 3 (Multi-Source Edition)
+=================================================================
+
+
+-----------------------------------------------------------------
+  [1/7] Face Detection & Encoding
+-----------------------------------------------------------------
+  Loading image: sample_data/ex1.jpg
+  Detected 1 face(s)
+  Saved cropped face to: ./face_crop.jpg
+  Face encoding: 128-d vector (first 5 values: [-0.10743853449821472, 0.028391387313604355, 0.05470447242259979, -0.08555450290441513, -0.08788710087537766]...)
+
+-----------------------------------------------------------------
+  [2/7] Local Face Database Lookup
+-----------------------------------------------------------------
+  No match in local database. Will proceed to web search.
+
+-----------------------------------------------------------------
+  [3/7] Multi-Engine Web Search (SerpApi)
+-----------------------------------------------------------------
+  Uploading image to temporary host...
+  Uploaded to: https://files.catbox.moe/5s1vr9.jpg
+    [Engine 1/3] Google Lens...
+    [Engine 1/3] Google Lens...
+    [Engine 1/3] Google Lens: 59 result(s)
+    [Engine 1/3] Google: 30 result(s)
+    [Engine 2/3] Yandex Images...
+    [Engine 2/3] Yandex Images...
+    [Engine 2/3] Yandex: 99 result(s)
+    [Engine 2/3] Yandex: 30 result(s)
+    [Engine 3/3] Google Reverse Image...
+    [Engine 3/3] Google Reverse Image...
+    [Engine 3/3] Google Reverse: 9 result(s)
+    [Engine 3/3] Google: 9 result(s)
+  Total: 69 results → 69 unique after dedup
+  [Pass 1] Biometrically checking candidate thumbnails (max 30)...
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQnAxsDGCHY04cxqnhl2tnVI41MR4Px8RoC3U1W3yPO_ZsUapmv: match=True, dist=0.3477
+    - Checked: 3 years in mumbai. when i moved here, i  | Dist: 0.3477 | Src: Instagram
+    ✓ Verified match: 3 years in mumbai. when i move... (Dist: 0.3477)
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRHH6NzKexhURvqGH7H0pzuo5kGYtTun5SWdhvcWDr0BmFfhBa5: match=False, dist=0.6448
+    - Checked: Eyes that talk 😻 📸 Shot on Phone (unedit | Dist: 0.6448 | Src: Instagram
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThWPwiyzxeOMNjhsO5NlsOZBTxq8F9Kn3RxAhyowi0D84oACHO: match=False, dist=0.6298
+    - Checked: How not to obsess? ❤️‍🩹🥰✨ [ Photoshoot,  | Dist: 0.6298 | Src: Instagram
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT6aBSSJz9scEuO3iqQgSrGwi1L49_T-CRVkUL1UQzSw5m4B3s2: match=False, dist=0.6290
+    - Checked: Hey ☺️👀 #picoftheday #instadaily #instag | Dist: 0.6290 | Src: Instagram
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRR5KWuDbaNp8uYWk0SV_xGF1zHosk0eq18piUEfOE5EErRbX6z: match=False, dist=0.5568
+    - Checked: My heart is beating😙💕 . . . #viral #tren | Dist: 0.5568 | Src: Instagram
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSoxeoyWeRNIACaxDNux3koK8MQNvarNgzXFEMf1odpgEVrZmGW: match=True, dist=0.2351
+    - Checked: Chase on X: "Most beautiful Avg 40 yr ol | Dist: 0.2351 | Src: x.com
+    ✓ Verified match: Chase on X: "Most beautiful Av... (Dist: 0.2351)
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQOKhwFwn5GDGzCAnST8A99z0z9z8wBYCHlebChRUDHIQFVgxfB: match=False, dist=0.5858
+    - Checked: Name naziya Age :17 Class :12th B'day :  | Dist: 0.5858 | Src: Threads
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgOuhYK6TQkjQ8UC0-VlKdF_YwYFLBv4wRig4QC54_Vt5SszK5: match=False, dist=0.6204
+    - Checked: A young Indian girl standing in a balcon | Dist: 0.6204 | Src: Threads
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT-ZGeilefDhwlPoluiyF6Vn7ucJuzcPq8-4t5Lh_eJDEj0X99b: match=False, dist=0.5958
+    - Checked: zaki musyaffa (zjek223) - Profile | Pint | Dist: 0.5958 | Src: Pinterest
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR5Quichy1_Stql112pRfq3CMqPYHl2kl_AwKonMBVyXdVcUHyI: match=False, dist=0.5545
+    - Checked: Tissa Biani Azzahra on X: "❤️🤗🥰" / X | Dist: 0.5545 | Src: x.com
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSipaAS754WFW3zihWkf0ivkEN4R4zib_yHFUOyfultUQHFoEii: match=False, dist=0.6785
+    - Checked: ADPList: Wienona Parlina | Dist: 0.6785 | Src: ADPList
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRkJjXsg4kQVcJydBARG4srxgMm9Ivi-A5zNjmzLW8TkhGzr6Xf: match=False, dist=0.5394
+    - Checked: 10 Fakta Film Garis Waktu, Adaptasi Nove | Dist: 0.5394 | Src: IDN Times
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEg_Uq7haSx7Ec21_txun2RaW85s-1k1C2-fJQVLJ8Z5zTLp8C: match=False, dist=0.5885
+    - Checked: A Girl in Blank Top Sitting on the Groun | Dist: 0.5885 | Src: Pexels
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS86wonHeKxxNfO1DnaSsCaNGfyiHlDngFRa5GJKT50d2dqRH1n: match=False, dist=0.6139
+    - Checked: Kimberly Lam (kiminpei) - Profile | Pint | Dist: 0.6139 | Src: Pinterest
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS19nkvIHSgr6UUBXy4EEPcvJaAxumasdwJsxTpFYNq2JQutGTz: match=False, dist=0.6888
+    - Checked: A woman with long hair sitting on the gr | Dist: 0.6888 | Src: Unsplash
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZbFo28SBRxW0zckP82214j6aCvxcQQ_DjGVAAXALT7fF2RoPx: match=False, dist=0.6563
+    - Checked: Anna-Magdalena Hämmerle - Filmmakers | Dist: 0.6563 | Src: Filmmakers
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo7T1ESbC9T5Be6RxsI8ruE_LzW2SAoWWOjZX83eqOTwGqaT08: match=False, dist=0.5958
+    - Checked: The Skin Care Step a Model Absolutely Ne | Dist: 0.5958 | Src: Candymag.com
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY8lyGkJ6Lcni52TPbkUa71Rq9MrMn_ZA1wNMzqYvmAW6CePrH: match=False, dist=0.6823
+    - Checked: Riddhi Patel - IT Support II Configurati | Dist: 0.6823 | Src: LinkedIn
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEFOrUdpG3g8fq4jemtpq5IVw_0H87QirzDmHwYx3jhseXSiOD: match=False, dist=0.6782
+    - Checked: Sumaiya Rahman | Facebook | Dist: 0.6782 | Src: Facebook
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRblGTZfp8KvUwHWe3r0GCZOETgl2cKHhGtiUTkBibLSgGnUWiY: match=False, dist=0.4989
+    - Checked: Swastima Khadka: The Actress Who Refuses | Dist: 0.4989 | Src: The Film Nepal
+[Debug] Verification result for https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTFS7veGp7_u5jxBnhQTg6fTm1DWHD7ltIMiI0dALrUZ9W7pXIy: match=False, dist=0.5879
+    - Checked: Author - Dreck-Records | Dist: 0.5879 | Src: Dreck-Records
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTzmuI6J-P7AP2PGP1SWEq4cW6uGVWPmfSszZTQMBvijvNj-9E0: match=False, dist=0.6938
+    - Checked: A black and white photo of a woman with  | Dist: 0.6938 | Src: Unsplash
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQsaDX-ikC1eoBVXCKsEjLR6igklpjwROWYT3A71s6RHb5aBvb4: match=False, dist=0.5995
+    - Checked: All Product – Page 2 – Fabricca Clothing | Dist: 0.5995 | Src: Fabricca Clothing
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT6dPBaJ6Q5GMtTwusI2J6F0mac-00Wa3LKh9lsP9DhPaKNCTeO: match=False, dist=0.6543
+    - Checked: Mariem Boujallabia - YouTube | Dist: 0.6543 | Src: YouTube
+[Debug] Verification result for https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTvsjp37Q1xQEBdnu9-5ALsddM7XI47GfJaiTKi85GPZr9rytPz: match=False, dist=0.7155
+    - Checked: Pegah Rezaei‏ - | ‏Microbiologist | Medi | Dist: 0.7155 | Src: LinkedIn
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu6MDn5mil8oBzDgFnt3XjT6uJYIoZY2NN11nz51z9ouSwePXF: match=False, dist=0.6302
+    - Checked: 18-year-old daughter cuts off her mom an | Dist: 0.6302 | Src: Cheezburger
+[Debug] Verification result for https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRsXgFOOSvDca_DQP0UuhF-9CYSV51uo3pGMkC2iLQGycgj1H4v: match=False, dist=0.5728
+    - Checked: Albright College | College in Reading, P | Dist: 0.5728 | Src: www.albright.edu
+[Debug] Verification result for https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSZwEj_KsPzDio9-RdZNmKMLzYrsIDadtUCgS6GlHKhvcS0n2C7: match=False, dist=0.6744
+    - Checked: Tranquil Portrait of a Woman in Nature · | Dist: 0.6744 | Src: Pexels
+  [NameSearch] Extracted person name(s): ['Avg 40', 'Anushka Sen', 'Khassen Gulsezim', 'Adaptasi Novel', 'Anushka Sen Biography']
+  [NameSearch] Trying 5 candidate name(s): ['Avg 40', 'Anushka Sen', 'Khassen Gulsezim', 'Adaptasi Novel', 'Anushka Sen Biography']
+    [NameSearch] Searching for 'Avg 40'...
+    [NameSearch] Searching for 'Anushka Sen'...
+    [NameSearch] Found Knowledge Graph with 4 profile(s)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLCUbhgAVx5LCf7vsD6Ms0vnAdmxdcO9CjBQn9MZL0Kw&s=10: match=False, dist=0.5530
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmPuWPW_HnXSoKOCrHAYZBj9D9sAef6_sLNmUUkGA9eQ&s=10: match=False, dist=0.5679
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqQXp6cL6BaKW3TKlN7VBMxJywu-ue_2y81tKqVa0fPg&s=10: match=False, dist=0.6313
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbfZObLW4N_FDs-bD17Ix5fgmC0auXjMK_3ppA6hB0SQ&s=10: match=False, dist=0.6162
+      ✗ Instagram: https://www.instagram.com/anushkasen0408 (dist=0.5530)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdqpFWRseJeF5RlEFvVkxTSKTsRi-zvQCn0aSVZ5JrQA&s=10: match=False, dist=0.5881
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRslnVdSFcvxzvpHamDliUDNYt_DJYv6w7RofRplexA8g&s=10: match=False, dist=0.6084
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmPuWPW_HnXSoKOCrHAYZBj9D9sAef6_sLNmUUkGA9eQ&s=10: match=False, dist=0.5679
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSToA3UXNdrNlFUtnnfgKLMpZjw7l800iOi6kyJEiCrEw&s=10: match=False, dist=0.6794
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdlHNMLkMbKXPQiYG5XVDOO9eydqSatMbqXzehDNY7g&s=10: match=False, dist=0.6055
+      ✗ Facebook: https://www.facebook.com/Anushka.sen.0408 (dist=0.5679)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR61Mcv8gWnXQBPDbU6sYp9sebRpsx7cbdF2iIdJwdveQ&s=10: match=False, dist=0.5549
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZFV0ZT5pV16oRn3QRyxtYfJRIcR55qV37DrvKqbCe8w&s=10: match=False, dist=0.6853
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxt2AXuR2WbM20ioVqmp1rRVGMEP-2gqNdG7rD1JX_jw&s=10: match=False, dist=0.5911
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcbAPve7OR2m-ubafRafvM_iFt4D1lGyyqHM9GImWdXg&s=10: match=False, dist=0.5727
+      ✗ YouTube: https://www.youtube.com/c/AnushkaSen04 (dist=0.5549)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2HSEGaRAFSAYnSdHZgB8TjHLiuGCz9fFsfo4TOCVVZQ&s=10: match=False, dist=0.5830
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmWMd_3mkigw-oOLS1P6WFD_yOawONmWk4Kg3HDjYTig&s=10: match=False, dist=0.5842
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXWg7DbyCemAZl5yiglJgDZkoTyewmBpPFhahl_Q0qLg&s=10: match=False, dist=0.5747
+      ✗ X (Twitter): https://twitter.com/anushkasen_04 (dist=0.5747)
+      - Anushka Sen (@anushkasen0408) | https://www.instagram.com/anushkasen0408/?hl\u003d (no photo)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR61Mcv8gWnXQBPDbU6sYp9sebRpsx7cbdF2iIdJwdveQ&s=10: match=False, dist=0.5549
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZFV0ZT5pV16oRn3QRyxtYfJRIcR55qV37DrvKqbCe8w&s=10: match=False, dist=0.6853
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxt2AXuR2WbM20ioVqmp1rRVGMEP-2gqNdG7rD1JX_jw&s=10: match=False, dist=0.5911
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZdbGT1kUZFcJ5Y1EdRowZMjrdy_KGKJWS6W3-1rhzFg&s=10: match=False, dist=0.5572
+      ✗ Anushka Sen | https://www.youtube.com/@AnushkaSen04 (dist=0.5549)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdqpFWRseJeF5RlEFvVkxTSKTsRi-zvQCn0aSVZ5JrQA&s=10: match=False, dist=0.5881
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRslnVdSFcvxzvpHamDliUDNYt_DJYv6w7RofRplexA8g&s=10: match=False, dist=0.6084
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmPuWPW_HnXSoKOCrHAYZBj9D9sAef6_sLNmUUkGA9eQ&s=10: match=False, dist=0.5679
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSToA3UXNdrNlFUtnnfgKLMpZjw7l800iOi6kyJEiCrEw&s=10: match=False, dist=0.6794
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdlHNMLkMbKXPQiYG5XVDOO9eydqSatMbqXzehDNY7g&s=10: match=False, dist=0.6055
+      ✗ Anushka Sen (@Anushka.sen.0408) | https://www.facebook.com/Anushka.sen.0408/ (dist=0.5679)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlTOj3ziV1avE4I_2jS3R8av_Iq3B7fOXxWTkVYltqtg&s=10: match=False, dist=0.5631
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZNG-gan5pSQhdC6-ahtgXZVoBY81yD-Zd_ZPzdmpqMQ&s=10: match=False, dist=0.6015
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbW0xYFjZp6BG3U9u8OyJhFbSYKmv9sPKpMI8T7eyuRw&s=10: match=False, dist=0.7184
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqEyNuuWkcsmQHI9tVu_zslcQhZVp0R4a4AxvGZnBuVw&s=10: match=False, dist=0.5964
+      ✗ Anushka Sen - Actor | https://in.linkedin.com/in/anushka-sen-a9239536a (dist=0.5631)
+    [NameSearch] Searching for 'Khassen Gulsezim'...
+      - guka (@hsnglsm) • Instagram photos and v | https://www.instagram.com/hsnglsm/?hl\u003den (no photo)
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Q3KXRwCQv-_tQzhg-8HhtHAIVrWugb-KS90P5WOPxA&s=10: match=False, dist=0.5905
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVQyRBFbsKatx1yxwuCA39tnBSxCLGB4LdFD_JWXTsKw&s: match=False, dist=0.4927
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq-flMHR0d6vn_IEvdsXuSlebTvByro1xuSyMO7AfGDg&s=10: match=False, dist=0.6194
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW3VC6nBwsAUDt5zJbwLw-J8jls86mMP4Mii71vfLbfw&s=10: match=False, dist=0.5541
+      ✗ Gulsezim Khassen | https://www.tiktok.com/discover/gulsezim-khassen (dist=0.4927)
+    [NameSearch] Searching for 'Adaptasi Novel'...
+    [NameSearch] Searching for 'Anushka Sen Biography'...
+  [NameSearch] No verified profile found via name search.
+  [Resolver] Direct extraction: https://www.instagram.com/p/DQ6v3JHiIpk/... → https://www.instagram.com/sharonverma/
+  [Resolver] Upgraded: https://www.instagram.com/p/DQ6v3JHiIpk/ → https://www.instagram.com/sharonverma/
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNSox_Zu657xQYLAunVZmvrBJTr_oalnp_IyLdzhN5tg&s: match=True, dist=0.4863
+  [Resolver] ✓ Profile photo VERIFIED (dist=0.4863)
+  [Resolver] Direct extraction: https://x.com/Chasemaster_VK/status/1996... → https://x.com/Chasemaster_VK
+  [Resolver] Upgraded: https://x.com/Chasemaster_VK/status/1996 → https://x.com/Chasemaster_VK
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjPY6Rv9Drf3-7Ys8k207zR897B7wFPTJf_rq6Wrsh3A&s=10: match=False, dist=0.9377
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKedrLdXKGqLF7Dp8luK6JJQD1Bh-BEPeguLltE_xVJg&s=10: match=False, dist=0.7178
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWvxqX6xkiYT4EOX04904FxYIdd5mOe_zKp9tVmwhJNg&s=10: match=False, dist=0.7189
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBiONfgcK9haUeVjvFxMCNOt1sr3O0M9ie8lwDejm6-A&s=10: match=False, dist=0.6941
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm4RmpdWA3YR5urmhif9J9U-K8_U4m49TB7U6hDj95Hw&s=10: match=False, dist=0.8649
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNoINHjAsyy2H7ssPaldAto9L6AjAoISwqfNPGViPqJQ&s=10: match=False, dist=0.8515
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzqab8LsvxSHW-afjTZCU-K8itawWRMf-D1NPBIEtc1g&s: match=False, dist=0.9412
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5U2Itj3xLlDvpOU00qRUBCQZh9NGtzIdStpGGYqCNgA&s=10: match=False, dist=0.7317
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxKLAleJBS_0mhkSGiYEy-Kh4SvGPWmdSCBNLDRvENA&s=10: match=False, dist=0.8047
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5FIXuB-7qvF7W7d0ZnIBOI36mveVRyeeWu4W01GEzTA&s=10: match=False, dist=0.7459
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW3TAj4reumIijA7GymqaysuQZT_eWQd8g4BXQoMJWFQ&s=10: match=False, dist=0.8839
+[Debug] Verification result for https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNm4hhUc0pWc0T83vLEUeU5CZZfLSM-qniOVlQQMIKSw&s=10: match=True, dist=0.5451
+  [Resolver] ✓ Profile photo VERIFIED (dist=0.5451)
+  Best match [PROFILE]: 3 years in mumbai. when i moved here, i didn't really have ... (google_lens)
+  URL: https://www.instagram.com/sharonverma/
+  Registering newly identified person in local database...
+  Registered as DB ID #1
+
+-----------------------------------------------------------------
+  [5/7] Cryptographic Fingerprinting
+-----------------------------------------------------------------
+  Building canonical verification record...
+  Record fields: ['source_url', 'page_title', 'face_crop_hash', 'face_encoding_hash', 'matched_image_url', 'timestamp']
+  SHA-256 fingerprint: 9f4744524d80b8a964c2ebc022dba8f4b8276317cd4fa098f2747d92361e06f5
+
+-----------------------------------------------------------------
+  [6/7] Blockchain Upload
+-----------------------------------------------------------------
+  Initializing local Ethereum test chain (EthereumTesterProvider)...
+  Chain ready -- using account: 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf
+  Account balance: 1000000 ETH
+  Installing Solidity compiler v0.8.19...
+  Compiling contract: /home/finex/Desktop/projects/uncompleted/hackgoa/contracts/FaceVerification.sol
+  Compilation successful -- ABI has 5 entries
+  Deploying FaceVerification contract...
+/home/finex/Desktop/projects/uncompleted/hackgoa/venv/lib/python3.14/site-packages/cached_property.py:27: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+  if asyncio.iscoroutinefunction(self.func):
+  Contract deployed at: 0xF2E246BB76DF876Cef8b38ae84130F4F55De395b
+  Deploy tx hash: ff776e221418e5344645912321b692977e62b963b12eff1644b97068dbd70558
+  Block number: 1
+  Submitting record to blockchain...
+    URL: https://www.instagram.com/sharonverma/
+    Hash: 9f4744524d80b8a964c2ebc022dba8f4b8276317cd4fa098f2747d92361e06f5
+  Record uploaded successfully!
+    Record ID: 0
+    Tx hash: 621260d269f4c4357d659309db4080362207467034563f8b7b72a720737ae348
+    Block: 2
+
+-----------------------------------------------------------------
+  [7/7] On-Chain Re-Verification
+-----------------------------------------------------------------
+  Re-computing hash independently from original record data...
+  Recomputed hash: 9f4744524d80b8a964c2ebc022dba8f4b8276317cd4fa098f2747d92361e06f5
+  Reading record #0 from blockchain...
+    On-chain hash:   9f4744524d80b8a964c2ebc022dba8f4b8276317cd4fa098f2747d92361e06f5
+    Recomputed hash: 9f4744524d80b8a964c2ebc022dba8f4b8276317cd4fa098f2747d92361e06f5
+    On-chain URL:    https://www.instagram.com/sharonverma/
+    Submitter:       0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf
+  VERIFICATION PASSED -- Record is authentic and untampered!
+
+=================================================================
+  PIPELINE COMPLETE -- SUMMARY
+=================================================================
+  Input image:       sample_data/ex1.jpg
+  Faces detected:    1
+  Identity:          3 years in mumbai. when i moved here, i didn't really have ...
+  Identity URL:      https://www.instagram.com/sharonverma/
+  Match Source:      Web Search (Verified)
+  Record hash:       9f4744524d80b8a964c2ebc022dba8f4b8276317cd4fa098f2747d92361e06f5
+  Blockchain:        Local Ethereum (eth-tester)
+  Contract:          0xF2E246BB76DF876Cef8b38ae84130F4F55De395b
+  Record ID:         0
+  Tx hash:           621260d269f4c4357d659309db4080362207467034563f8b7b72a720737ae348
+
+  +---------------------------------------------------+
+  |  VERIFICATION: PASSED                             |
+  |  The on-chain record matches the original data.   |
+  |  Record is authentic and untampered.              |
+  +---------------------------------------------------+
+
+  Total time: 161.2s
+=================================================================
+
+<sys>:0: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/.solcx-lock-0.8.19' mode='w' encoding='UTF-8'>
