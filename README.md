@@ -11,7 +11,7 @@ FaceTrace is an AI-powered forensic pipeline that identifies a person from a pho
 ```
 Photo → Face Detection → Local DB Lookup → Web Search (Google + Yandex)
      → Biometric Verification → Profile Resolution → SHA-256 Fingerprint
-     → Ethereum Blockchain (Sepolia) → On-Chain Re-Verification ✓
+     → Polygon Amoy Blockchain → On-Chain Re-Verification ✓
 ```
 
 | Stage | What Happens |
@@ -22,7 +22,7 @@ Photo → Face Detection → Local DB Lookup → Web Search (Google + Yandex)
 | 4. Biometric Verify | Every candidate result has its profile photo downloaded and face-compared |
 | 5. Profile Resolution | Resolves social media post URLs → actual profile URLs via page metadata |
 | 6. Fingerprinting | Bundles all evidence into a canonical JSON + SHA-256 hash |
-| 7. Blockchain Upload | Commits the hash to the `FaceVerification` Solidity contract on Sepolia |
+| 7. Blockchain Upload | Commits the hash to the `FaceVerification` Solidity contract on Polygon |
 | 8. Re-Verification | Re-computes hash independently and verifies it matches on-chain |
 
 ---
@@ -57,7 +57,7 @@ brew install cmake openblas
 ### 1. Clone and set up Python environment
 
 ```bash
-git clone https://github.com/yourname/facetrace.git
+git clone https://github.com/Shlok-kapade/facetrace.git
 cd facetrace
 
 python3 -m venv venv
@@ -71,7 +71,7 @@ python -m spacy download en_core_web_sm
 
 ```bash
 cp .env.example .env
-# Now open .env and fill in the values (see section below)
+# Open .env and fill in the values (see section below)
 ```
 
 ### 3. Start the web UI
@@ -84,104 +84,29 @@ Open your browser at **http://localhost:5000** — drag and drop a photo to begi
 
 ---
 
-## 🔑 `.env` Configuration
+## 🔑 `.env` Configuration (HackGoa Judges Guide)
 
-Copy `.env.example` to `.env` and fill in the following values:
+> **✅ FOR HACKGOA JUDGES:** The complicated blockchain setup (RPC URLs, Smart Contract Deployment, and Testnet Wallets) **is already done and provided in the submission**. You do not need to configure the Polygon network yourself. 
 
----
+### 1. `SERPAPI_API_KEY` — Reverse Image Search
 
-### `SERPAPI_API_KEY` — Reverse Image Search
+This is the only key you might need to change. It is used to query Google Lens and Yandex. 
+> 💡 **Note:** Just create a new `SERPAPI_API_KEY` if the existing one didn't work (the free tier only allows 100 searches per month and may run out).
 
-Used to query Google Lens and Yandex reverse image search.
-
-**How to get it:**
+**How to get a new one:**
 1. Go to [serpapi.com](https://serpapi.com) → Sign up (free)
-2. Free plan gives you **100 searches/month** — more than enough for demos
-3. Go to **Dashboard → API Key** → copy your key
-
-```env
-SERPAPI_API_KEY=f115eb4...your_key_here
-```
-
----
-
-### `ETH_RPC_URL` — Ethereum Sepolia RPC Endpoint
-
-This is the URL your app uses to talk to the Ethereum blockchain. You need a free account from Infura or Alchemy.
-
-**Option A — Infura (recommended):**
-1. Go to [infura.io](https://infura.io) → Sign up (free, no credit card)
-2. Click **Create New API Key** → Select "Web3 API"
-3. Go to your project → **Networks** tab → Enable **Sepolia**
-4. Copy the HTTPS endpoint — it looks like:
-   `https://sepolia.infura.io/v3/abc123your_project_id`
-
-**Option B — Alchemy:**
-1. Go to [alchemy.com](https://alchemy.com) → Sign up (free)
-2. Click **Create App** → Chain: Ethereum → Network: Sepolia
-3. Click **View Key** → copy the HTTPS URL
-
-```env
-ETH_RPC_URL=https://sepolia.infura.io/v3/YOUR_PROJECT_ID
-```
-
----
-
-### `ETH_PRIVATE_KEY` — Wallet Private Key
-
-This is the private key of the Ethereum wallet that will sign and submit transactions.
-
-> ⚠️ **IMPORTANT**: Use a **dedicated testnet-only wallet**. Never use your main wallet with real ETH. Create a fresh one just for this.
-
-**How to get it:**
-1. Install [MetaMask](https://metamask.io) browser extension
-2. Create a new account (or use an existing one)
-3. Click the **three dots (⋮)** next to the account name → **Account Details**
-4. Click **Export Private Key** → enter your MetaMask password → copy the key
-
-```env
-ETH_PRIVATE_KEY=0xabc123your_private_key_here
-```
-
----
-
-### `ETH_PRIVATE_KEY` — Fund Your Wallet with Free Amoy MATIC
-
-Your wallet needs Amoy MATIC to pay gas fees (each transaction costs ~0.0001 ETH).
-
-**Get free Amoy MATIC from faucets:**
-- [faucet.polygon.technology](https://faucet.polygon.technology) — paste your wallet address → get 0.5 ETH
-- [faucet.polygon.technology](https://faucet.polygon.technology) — requires Alchemy account
-- [faucets.chain.link](https://faucets.chain.link/sepolia) — Chainlink faucet
-
-One faucet claim gives you enough for **hundreds of pipeline runs**.
-
----
-
-### `ETH_CONTRACT_ADDRESS` — Smart Contract Address (optional after first run)
-
-The `FaceVerification` Solidity contract is deployed **automatically on first run**. After deployment, the address is saved to `contract_data.json`.
-
-To avoid redeploying on every run (faster + saves gas), copy the deployed address here:
-
-```env
-# Leave blank on first run — the app deploys it automatically
-# After first run, copy the address from contract_data.json or from the terminal output
-ETH_CONTRACT_ADDRESS=0xYourDeployedContractAddress
-```
-
----
+2. Go to **Dashboard → API Key** → copy your key and replace it in the `.env` file.
 
 ### Complete `.env` example
 
 ```env
-# SerpApi — reverse image search
-SERPAPI_API_KEY=f115eb4d875d7de1fda4f52671c7d4c19b34c42dfe9c370ae54bfa76e2af2959
+# SerpApi — reverse image search (replace if quota is reached)
+SERPAPI_API_KEY=your_serpapi_key_here
 
-# Ethereum Sepolia
-ETH_RPC_URL=https://sepolia.infura.io/v3/abc123your_project_id
-ETH_PRIVATE_KEY=0xabc123your_private_key_here
-ETH_CONTRACT_ADDRESS=   # leave blank on first run
+# Blockchain config (ALREADY CONFIGURED FOR YOU)
+ETH_RPC_URL=https://polygon-amoy.drpc.org
+ETH_PRIVATE_KEY=0x_provided_in_submission
+ETH_CONTRACT_ADDRESS=0x_provided_in_submission
 
 # Optional: adjust face matching strictness (lower = stricter)
 # FACE_MATCH_TOLERANCE=0.45
@@ -234,7 +159,7 @@ facetrace/
 │   ├── profile_resolver.py   # Stage 4: post URL → profile URL resolution
 │   ├── face_verify.py        # Biometric face comparison utilities
 │   ├── fingerprint_stage.py  # Stage 5: SHA-256 cryptographic fingerprinting
-│   └── chain_client.py       # Stage 6-7: Ethereum Sepolia interaction
+│   └── chain_client.py       # Stage 6-7: Polygon Amoy interaction
 │
 ├── templates/
 │   └── index.html            # Web UI
@@ -258,7 +183,7 @@ python pipeline.py --input sample_data/ex2.jpg
 # [3/7] Multi-Engine Web Search (SerpApi)
 # [4/7] Profile Resolution & Biometric Verification
 # [5/7] Cryptographic Fingerprinting
-# [6/7] Blockchain Upload (Sepolia)
+# [6/7] Blockchain Upload (Polygon Amoy)
 # [7/7] On-Chain Re-Verification
 ```
 
@@ -283,14 +208,8 @@ Make sure cmake and build tools are installed (see Prerequisites above). On Ubun
 **`No face detected in the image`:**
 Use a clear, well-lit photo where the face is the main subject. Avoid group photos or faces at extreme angles.
 
-**`Cannot connect to Ethereum node`:**
-Double-check `ETH_RPC_URL` in your `.env`. Make sure you enabled the Sepolia network in your Infura/Alchemy dashboard.
-
-**`Insufficient funds` / low balance warning:**
-Visit one of the faucets listed above to get free Amoy MATIC. You need at least 0.001 ETH per run.
-
-**`ETH_CONTRACT_ADDRESS` not set but contract already deployed:**
-Open `contract_data.json` → copy the `address` value → paste it as `ETH_CONTRACT_ADDRESS` in `.env`.
+**`Cannot connect to Polygon Amoy node`:**
+Ensure you are connected to the internet. The free dRPC node might occasionally have high traffic; waiting a few moments usually resolves it.
 
 **Pipeline takes too long:**
 The web search and biometric verification stages take 2-4 minutes for first-time identification. After a face is identified once, it's cached locally and subsequent lookups are instant (< 1 second).
@@ -299,8 +218,8 @@ The web search and biometric verification stages take 2-4 minutes for first-time
 
 ## 🔒 Security Notes
 
-- **Never commit your `.env` file** — it contains your private key. It is listed in `.gitignore`.
-- Use a **separate wallet with only testnet ETH** — never expose your main wallet private key.
+- **Never commit your `.env` file** — it contains your private keys. It is listed in `.gitignore`.
+- Use a **separate wallet with only testnet MATIC** — never expose your main wallet private key.
 - The `uploads/` folder stores submitted images — clear it periodically in production.
 
 ---
